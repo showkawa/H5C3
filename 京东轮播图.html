@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding:0;}
+        ul li {
+           list-style-type: none;
+        }
+        .box {
+            width: 730px;
+            height: 454px;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .circle {
+            position: absolute;
+            left:50%;
+            bottom: 10px;
+            margin-left: -50px;
+
+            
+        }
+        .circle span.current{
+            background-color: #C1C182;
+        }
+        .circle span{
+            float: left;
+            width: 18px;
+            height: 18px;
+            border-radius: 9px;
+            background-color: #A2A2A2;
+            color: white;
+            text-align: center;
+            line-height: 18px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .clock {
+
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var scroll =document.getElementById("scroll");
+
+            var circle = document.createElement("div");
+
+            //circle.className = "circle";
+            circle.setAttribute("class","circle");
+            scroll.appendChild(circle);
+
+            var ul = document.getElementById("ul");
+            var lis = ul.children;
+            for (var i=0,ls=lis.length;i<ls;i++){
+                var span = document.createElement("span");
+                circle.appendChild(span);
+                span.innerHTML=i+1;
+            }
+            var cl= circle.children;
+            //return false;
+            cl[0].setAttribute("class","current");
+            /*===========================================================*/
+
+
+
+
+
+        }
+        
+    </script>
+</head>
+<body>
+<div class="box" id="scroll">
+    <div class="silder">
+        <ul id="ul">
+            <li><img src="images/11.jpg"/></li>
+            <li><img src="images/22.jpg"/></li>
+            <li><img src="images/33.jpg"/></li>
+            <li><img src="images/44.jpg"/></li>
+            <li><img src="images/55.jpg"/></li>
+        </ul>
+    </div>
+</div>
+<!--------------------------------------------------------->
+<div class="clock">
+    <div class="h"></div>
+    <div class="m"></div>
+    <div class="s"></div>
+</div>
+</body>
+</html>

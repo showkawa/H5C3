@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>getClass</title>
+    <script>
+        window.onload =function () {
+           function   getClass (className) {
+                if(document.getElementsByClassName){
+                    return document.getElementsByClassName(className);
+                }
+
+                var arr= [];
+                var getName =document.getElementsByTagName("*");
+                for(var i =0,ga = getName.length;i<ga;i++){
+                        var cla= getName[i].className.splice(" ");
+                        for(var j=0,cl =cla.length;j<cl;j++){
+                            if(cla[j] == className){
+                                arr.push(getName[i]);
+                            }
+                        }
+                }
+                return arr;
+            }
+            console.log(getClass("kawa").length)
+        }
+
+    </script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div class="kawa"></div>
+<div></div>
+<div></div>
+<div class="kawa1"></div>
+<div class="kawa2"></div>
+<div class="kawa3 kawa"></div>
+</body>
+</html>

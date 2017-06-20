@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<img src="http://demo.lanrenzhijia.com/uploads/allimg/130515/1-1305150S2190-L.jpg">
+</body>
+</html>
+<script>
+    $(function () {
+        $(document).on('mousemove',function (e) {
+            $('img').css({
+                'position':'absolute',
+                'top':e.pageY-83,
+                'left':e.pageX-158
+            });
+        })
+    });
+    
+</script>

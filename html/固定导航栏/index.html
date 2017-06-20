@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin: 0;padding: 0}
+        img{
+            vertical-align: top;
+        }
+        .main {
+            margin: 0 auto;
+            width: 1000px;
+            margin-top: 10px;
+        }
+        .fiexd {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="top" id="top">
+    <img src="top.png" alt=""/>
+</div>
+<div class="nav" id="Q-nav">
+    <img src="nav.png" alt=""/>
+</div>
+<div class="main">
+    <img src="main.png" alt=""/>
+</div>
+</body>
+</html>
+<script src="../返回顶部/my.js"></script>
+<script>
+    var nav =$("Q-nav");
+    var navTop = nav.offsetTop;//得到导航栏栏到顶部的距离
+    window.onscroll = function () {
+        if(scroll().top > navTop)
+        {
+            nav.className = "nav fiexd";
+        }
+        else
+        {
+            nav.className = "nav";
+        }
+    }
+
+</script>
+
+
+
+
+
+

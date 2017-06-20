@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>classlist</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="">Brand</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+            <ul class="nav navbar-nav">
+                <li class="item red"><a href="">Home</a></li>
+                <li class="active"><a href="">Link</a></li>
+                <li class="item red"><a href="">Link</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- /.navbar-collapse -->
+</div>
+<script>
+  /*  var lis = document.querySelectorAll('.nav > li');
+    for(var i =0;i<lis.length;i++){
+
+        lis[i].addEventListener('mouseover',function (e) {
+            //重置
+            for(var i =0;i<lis.length;i++){
+                lis[i].classList.remove('active');
+            }
+            this.classList.add('active');
+            e.preventDefault();
+        })
+    }*/
+  var link = document.querySelector('.navbar-nav');
+  link.addEventListener('click',function (e) {
+      this.classList.toggle('active')
+      e.preventDefault();
+  })
+</script>
+</body>
+</html>

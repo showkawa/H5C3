@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin: 0;padding: 0}
+        img{
+            vertical-align: top;
+        }
+        .main {
+            margin: 0 auto;
+            width: 1000px;
+            margin-top: 10px;
+        }
+        .fiexd {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+    </style>
+    <script src="../jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<div class="top" id="top">
+    <img src="top.png" alt=""/>
+</div>
+<div class="nav" id="Q-nav">
+    <img src="nav.png" alt=""/>
+</div>
+<div class="main">
+    <img src="main.png" alt=""/>
+</div>
+</body>
+</html>
+<script>
+    $(function () {
+       var height = $('#top').height();
+       $(window).scroll(function () {
+            var scrollTop = $(document).scrollTop();
+            if(scrollTop > height){
+                $('#Q-nav').addClass('fiexd')
+            }else{
+                $('#Q-nav').removeClass('fiexd');
+            }
+       })
+    });
+</script>
+
+
+
+
+
+

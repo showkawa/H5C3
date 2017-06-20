@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时</title>
+</head>
+<body>
+    <div id="time"></div>
+</body>
+    <script>
+        function $(id) {return document.getElementById(id)};
+        var t = $("time");
+        var count = 5;
+        setTimeout(goTime,1000);
+        function  goTime(){
+            t.innerHTML=count+"秒后返回首页"
+            count --;
+
+            if(count < 0){
+                window.location.href ="https://www.baidu.com"
+            }else{
+                setTimeout(arguments.callee,1000);
+            }
+        }
+
+
+    </script>
+</html>

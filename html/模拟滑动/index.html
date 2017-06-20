@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>滑动</title>
+    <style>
+
+        .dh {
+            height: 400px;
+            width: 512px;
+            margin: 200px auto;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        .dh img {
+            position: absolute;
+            top:0;
+        }
+        .dh .up {
+            position: absolute;
+            left: 0;
+            top:0;
+            width: 100%;
+            height: 200px;
+        }
+        .dh .down {
+            position: absolute;
+            left: 0;
+            top: 200px;
+            width: 100%;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dh">
+        <img id="pic" src="mi.png" alt="">
+        <div id="up" class="up"></div>
+        <div class="down"></div>
+    </div>
+</body>
+<script>
+    function $(id)  { return document.getElementById(id)};
+        var num =0;
+        var inv;
+        $("up").onmouseover = function () {
+            console.log(100);
+            /*if(inv){
+                console.log(101);
+                clearInterval(inv);
+            }*/
+            console.log(102);
+            inv = setInterval(move,500);
+        }
+
+       /* $("up").onmousemove = function () {
+            clearInterval(inv);
+        }*/
+
+    function move () {
+        num -= 1;
+        $("pic").style.top = num +"px";
+
+    }
+
+
+
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery-1.11.1.min.js"></script>
+    <script>
+        $(function () {
+            $('div').css('background-color','green');
+            $('button').eq(0).click(function () {
+                $('div').height('300px');
+            });
+            $('button').eq(1).click(function () {
+                $('div').html('offset:'+JSON.stringify($('div').offset()));
+            });
+//            $('button').eq(2).click(function () {
+//                alert('click');
+//            }).mouseout(function () {
+//                alert('mouseout');
+//            })
+            /*$('button').eq(2).bind('click mouseout',function () {
+                alert(119);
+            })*/
+            $('button').eq(2).bind({
+                click:function (e) {
+                    console.log(e)
+                },
+                mouseout:function () {
+                    alert('mouseout');
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+    <button>设置高度</button>
+    <button>获取offset值</button>
+    <button>JQ事件</button>
+    <div></div>
+</body>
+</html>

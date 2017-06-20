@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul li {
+            list-style-type: none;
+            float: left;
+            font-size: 20px;
+            font-family: "SimSun", "宋体";
+            color: orange;
+
+        }
+        .red {
+
+        }
+
+    </style>
+    <script src="../jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<ul class="wjx">
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+</ul>
+</body>
+</html>
+<script>
+    $(function(){
+        var wjx_sel = '★',wxj_none ='☆';
+        $('ul').on('mouseover','li',function (e) {
+            $(this)
+                .text(wjx_sel)
+                .prevAll()
+                .text(wjx_sel)
+                .end()
+                .nextAll()
+                .text(wxj_none);
+        }).on('click','li',function () {
+            $(this)
+                .addClass('red')
+                .siblings()
+                .removeClass('red');
+        }).on('mouseout',function () {
+
+        })
+    })
+
+
+</script>

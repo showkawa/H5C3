@@ -43,11 +43,92 @@ console.log(nameList.at(1));
 console.log(nameList.at(-1));
 
 
-/** 02. Object */
+/** 03. Object */
 let staff = {
     name: 'Brian',
     age: 30,
-    location: 'ShenZhen'
+    location: 'ShenZhen',
+    tags: ['manager', 'father', 'banker']
 };
 console.log(staff.skill);
 console.log(staff['location']);
+//对象的解构赋值,解构赋值时设置默认值的好处时防止undefined
+const { loves = [], tags: roles = [] } = staff;
+console.log(loves, roles);
+
+
+/* 04.pro */
+
+/* 05. this */
+console.log(this);
+
+const fun = function () {
+    console.log(this);
+}
+fun();
+
+const fun2 = () => {
+    console.log(this);
+};
+fun2();
+
+var name = "rdc";
+const rdc = {
+    name: "RDC",
+    type: "bank",
+    location: "SG",
+    do1: function () {
+        console.log(this);
+        const do3 = function () {
+            console.log(this);
+        }
+        do3();
+    },
+    do2: () => {
+        console.log(this);
+        const do4 = () => {
+            console.log(this.name);
+        }
+        do4();
+    }
+}
+rdc.do1();
+rdc.do2();
+
+/*06. short circuiting  */
+// OR
+console.log(5 || 'brian');
+console.log('' || 'brian');
+console.log(true || 'brian');
+console.log(undefined || null);
+console.log([] || NaN);
+
+const obj = {
+    names: "heshuang"
+}
+// obj.skill = obj.skill || 'full stack';
+obj.skill ||= 'full stack';
+console.log(obj);
+
+// AND
+console.log(5 && 'brian');
+console.log('' && 'brian');
+console.log(true && 'brian');
+console.log(undefined && null);
+let hongxiang = 'IOS developer';
+console.log(hongxiang &&= 'Full Stack Developer');
+
+// ?? Nullish: null and undefined
+let hong;
+const value = hong ?? 99;
+console.log(value);
+hong = 66;
+const value2 = hong ?? 99;
+console.log(value2);
+hong ??= 999;
+console.log(hong);
+
+
+
+
+

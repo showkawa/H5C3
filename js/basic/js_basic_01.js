@@ -38,7 +38,7 @@ console.log(nameList.indexOf('Neo'));
 console.log(nameList.includes('23'));
 console.log(nameList.includes(23));
 
-// at
+// at 按照下标返回索引的位置的值
 console.log(nameList.at(1));
 console.log(nameList.at(-1));
 
@@ -47,16 +47,17 @@ console.log(nameList.at(-1));
 let staff = {
     name: 'Brian',
     age: 30,
-    location: 'ShenZhen',
+    locations: 'ShenZhen',
     tags: ['manager', 'father', 'banker']
 };
 console.log(staff.skill);
-console.log(staff['location']);
+console.log(staff['locations']);
 //对象的解构赋值,解构赋值时设置默认值的好处时防止undefined
 const { loves = [], tags: roles = [] } = staff;
 console.log(loves, roles);
-
+// Object.keys() get all key list
 const keys = Object.keys(staff);
+// Object.values() get all values list
 const values = Object.values(staff);
 for (const item of keys) {
     console.log(item);
@@ -64,6 +65,7 @@ for (const item of keys) {
 for (const item of values) {
     console.log(item);
 }
+// Object.entries() get key-value list
 const stas = Object.entries(staff);
 for (const [prop, val] of stas) {
     console.log(prop, val);

@@ -72,6 +72,7 @@ module.exports = {
     ],
     //5. 模式
     mode: "development",
+    devtool: "source-map",
     //开发服务器 不会输出资源，因为他是在内存中打包
     devServer: {
         host: "localhost",//启动服务的域名

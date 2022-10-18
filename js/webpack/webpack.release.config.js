@@ -2,6 +2,17 @@ const path = require('path')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
+
+function getStyleLoader(prm) {
+    return [
+        // compiles Less to CSS
+        // 'style-loader',
+        MiniCssExtractPlugin.loader,
+        'css-loader',
+        prm,
+    ].filter(Boolean)
+}
 
 module.exports = {
     //1. 输出
@@ -17,33 +28,15 @@ module.exports = {
         rules: [
             {
                 test: /\.css$/i,
-                use: [
-                    // "style-loader", 
-                    MiniCssExtractPlugin.loader, //提取成单独的css文件
-                    "css-loader"
-                ],
+                use: getStyleLoader(),
             },
             {
                 test: /\.less$/i,
-                use: [
-                    // compiles Less to CSS
-                    // 'style-loader',
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'less-loader',
-                ],
+                use: getStyleLoader('less-loader')
             },
             {
                 test: /\.s[ac]ss$/i,
-                use: [
-                    // 将 JS 字符串生成为 style 节点
-                    // 'style-loader',
-                    MiniCssExtractPlugin.loader,
-                    // 将 CSS 转化成 CommonJS 模块
-                    'css-loader',
-                    // 将 Sass 编译成 CSS
-                    'sass-loader',
-                ],
+                use: getStyleLoader('sass-loader')
             },
             {
                 test: /\.(png|jpe?g|gif|webp|svg)$/i,
@@ -78,9 +71,13 @@ module.exports = {
             // 
             template: path.resolve(__dirname, 'public/index.html')
         }),
-        new MiniCssExtractPlugin()
+        new MiniCssExtractPlugin({
+            filename: 'css/main.css'
+        }),
+        new CssMinimizerPlugin()
 
     ],
     //5. 模式
     mode: "production",
+    devtool:"source-map"
 }

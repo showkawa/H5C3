@@ -55,13 +55,19 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
+                options: {
+                    cacheDirectory: true, //开启babel缓存
+                    cacheCompression: false //关闭缓存文件压缩
+                }
             }
         ]
     },
     //4. 插件
     plugins: [
         new ESLintPlugin({
-            context: path.resolve(__dirname, 'src')
+            context: path.resolve(__dirname, 'src'),
+            cache: true, //开启缓存
+            cacheLocation: path.resolve(__dirname, "node_modules/.cache/eslint-cache")
         }),
         new HtmlWebpackPlugin({
             // 模板 以public/index.html为模板创建心的文件

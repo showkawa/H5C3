@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
 const TerserWebpackPlugin = require('terser-webpack-plugin')
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 
 const threads = os.cpus().length
 
@@ -74,7 +75,7 @@ module.exports = {
                                 options: {
                                     cacheDirectory: true, //开启babel缓存
                                     cacheCompression: false, //关闭缓存文件压缩
-                                    plugins:['@babel/plugin-transform-runtime'], //减少代码的体积
+                                    plugins: ['@babel/plugin-transform-runtime'], //减少代码的体积
                                 }
                             }
                         ]
@@ -102,9 +103,37 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'css/main.css'
         }),
+        // 压缩css
         new CssMinimizerPlugin(),
+        // 压缩js
         new TerserWebpackPlugin({
             parallel: threads //开启多进程、进程数量
+        }),
+        // 压缩 image
+        new ImageMinimizerPlugin({
+            minimizer: {
+                implementation: ImageMinimizerPlugin.imageminGenerate,
+                options: {
+                    plugins: [
+                        ["gifsicle", { interlaced: true }],
+                        ["jpegtran", { progressive: true }],
+                        ["optipng", { optimizationlevel: 5 }],
+                        ["svgo",
+                            {
+                                plugins: [
+                                    "preset-default",
+                                    "prefixIds",
+                                    {
+                                        name: "sortAttrs",
+                                        params: {
+                                            xmlnsOrder: "alphabetical"
+                                        }
+                                    }
+                                ]
+                            }]
+                    ]
+                }
+            }
         })
 
     ],

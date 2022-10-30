@@ -6,6 +6,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
 const TerserWebpackPlugin = require('terser-webpack-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
+const PreloadWebpackPlugin = require('@vue/preload-webpack-plugin')
+const WorkboxPlugin = require('workbox-webpack-plugin')
 
 const threads = os.cpus().length
 
@@ -21,7 +23,10 @@ function getStyleLoader(prm) {
 
 module.exports = {
     //1. 输出
-    entry: "./index.js",
+    entry: {
+        ployfills: ['core-js/modules/es.promise'],
+        "wp": "./index.js"
+    },
     //1.1 多个入口文件
     // entry: {
     //     app: './index.js',
@@ -105,7 +110,14 @@ module.exports = {
             // 模板 以public/index.html为模板创建心的文件
             // 新的html特点 1.文件解构和原来一致 2.自动打包输出的资源
             // 
-            template: path.resolve(__dirname, 'public/index.html')
+            template: path.resolve(__dirname, 'public/index.html'),
+            title: 'Progressive Web Application'
+        }),
+        new WorkboxPlugin.GenerateSW({
+            // 这些选项帮助快速启用 ServiceWorkers
+            // 不允许遗留任何“旧的” ServiceWorkers
+            clientsClaim: true,
+            skipWaiting: true,
         }),
         new MiniCssExtractPlugin({
             filename: 'css/[name].css',
@@ -142,6 +154,11 @@ module.exports = {
                     ]
                 }
             }
+        }),
+        new PreloadWebpackPlugin({
+            // rel:"preload",
+            // as: "script"
+            rel: "prefetch"
         })
 
     ],

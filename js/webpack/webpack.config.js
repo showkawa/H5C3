@@ -16,7 +16,7 @@ module.exports = {
     //3. 加载器
     module: {
         rules: [
-            {   
+            {
                 //每个文件只能被其中一个loader配置处理
                 oneOf: [
                     {
@@ -73,7 +73,7 @@ module.exports = {
                                 options: {
                                     cacheDirectory: true, //开启babel缓存
                                     cacheCompression: false, //关闭缓存文件压缩
-                                    plugins:['@babel/plugin-transform-runtime'], //减少代码的体积
+                                    plugins: ['@babel/plugin-transform-runtime'], //减少代码的体积
                                 }
                             }
                         ]

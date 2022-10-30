@@ -21,11 +21,18 @@ function getStyleLoader(prm) {
 
 module.exports = {
     //1. 输出
-    entry: "./index.js",
+    // entry: "./index.js",
+    //1.1 多个入口文件
+    entry: {
+        app: './index.js',
+        main: './src/js/main.js'
+    },
     //2. 输出
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "js/main.js",
+        // filename: "js/main.js",
+        //2.1 入口文件多个则出口文件不可写死
+        filename: "[name].js",
         clean: true // 每次自动清除打包的资源
     },
     //3. 加载器
@@ -139,5 +146,41 @@ module.exports = {
     ],
     //5. 模式
     mode: "production",
-    devtool: "source-map"
+    devtool: "source-map",
+    optimization: {
+        // 代码分割配置
+        splitChunks: {
+            chunks: "all",// 对所有模块进行分割
+            // 下面是默认配置
+            // miniSize: 2000, // 代码分割的最小大小
+            // minRemainingSize: 0, // 类似于miniSize最后确定提取的文件大小不能为0
+            // minChunks: 1, //至少被引用的次数，满足条件才会代码分割
+            // maxAsyncRequests: 30, //按需加载时并行加载文件的最大数
+            // maxInitalRequests: 30, //入口js并行请求的最大数量
+            // enforceSizeThreshold: 50000, //超过50kb一定会单独打包 (此时会忽略minRemainingSize，maxAsyncRequests，maxInitalRequests)
+            // cacheGroups: { //group，哪些模块要打包到一个组
+            //     defaultVendors: { //组名
+            //         test: /[\\/]node_modules[\\/]/, //需要打包到一起的模块
+            //         priority: -10, //权重 越大越高
+            //         reuseExistingChunk: true // 如果当前chunk包含已从主bundle中拆分出的模块，则它将被重用而不是生成新的模块
+            //     },
+            //     default:{ // 其他不在名称组的会使用该默认规则
+            //         minChunks: 2, // 这里的minChunks权重更大，会覆盖上面的值
+            //         priority: -20,
+            //         reuseExistingChunk: true
+            //     }
+            // }
+            cacheGroups: {
+                default: { // 其他不在名称组的会使用该默认规则
+                    minChunks: 2, // 这里的minChunks权重更大，会覆盖上面的值
+                    minSize: 0, // 默认分割代码大小调整为0， 即没有最小限制
+                    priority: -20,
+                    reuseExistingChunk: true
+                }
+            }
+
+
+
+        }
+    }
 }

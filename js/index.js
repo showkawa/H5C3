@@ -1,3 +1,18 @@
+  ////////////////////////////////////////////////////////////////
+  // js basic
+  const newsDom = document.querySelector('.news')
+  console.log('newsDOM -> ', newsDom.getBoundingClientRect())
+
+  window.scrollTo({
+    top:window.outerHeight,
+    left:0,
+    behavior:'smooth'
+  })
+  // js basic
+  ////////////////////////////////////////////////////////////////
+
+
+
 /**
  * Created by Administrator on 2017/5/15.
  */
@@ -305,3 +320,4 @@ class Vector {
   
   setup();
   draw(performance.now()); 
+

@@ -1,0 +1,25 @@
+.tar {
+    font-size: 20px;
+    text-align: center;
+}
+
+.title {
+    height: 5rem;
+    width: 100%;
+    background-color: aquamarine;
+
+}
+
+.content {
+    height: 200rem;
+    background-color: azure;
+}
+
+.footer {
+    height: 5rem;
+    background-color: aquamarine;
+}
+
+.fixed {
+    position: fixed;
+}

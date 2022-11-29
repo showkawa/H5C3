@@ -54,10 +54,10 @@ class User {
 
     //chain method
     addPreName(pre) {
-         this.name = pre + this.name;
-         return this;
+        this.name = pre + this.name;
+        return this;
     }
-    updateAge(num){
+    updateAge(num) {
         this.age = num;
         return this;
     }
@@ -75,3 +75,19 @@ console.log(user.getNewRole())
 
 console.log(User.roles('VP2', 'VP3'))
 console.log(user.addPreName('Brian ').updateAge(31))
+
+// GEO API
+if (navigator.geolocation) {
+    console.log('Geting geolocation')
+    navigator.geolocation.getCurrentPosition(
+        function (pos) {
+            console.log(pos)
+        },
+        function(err){
+            console.log(err)
+        }
+    )
+}
+
+console.log(`https://www.google.pt/maps/@22.38131,114.168639,11z`)
+

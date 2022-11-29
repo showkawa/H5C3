@@ -18,10 +18,12 @@ body {
     height: 60rem;
     background-color: beige;
 }
+
 .section2 {
     height: 10rem;
     background-color: #a0c1ed;
 }
+
 .content {
     height: 100rem;
     background-color: azure;
@@ -36,4 +38,8 @@ body {
     position: fixed;
     top: 0;
     right: 0.5rem;
+}
+
+#map {
+    height: 180px;
 }

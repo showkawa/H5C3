@@ -83,11 +83,26 @@ if (navigator.geolocation) {
         function (pos) {
             console.log(pos)
         },
-        function(err){
+        function (err) {
             console.log(err)
         }
     )
 }
 
 console.log(`https://www.google.pt/maps/@22.38131,114.168639,11z`)
+
+
+const getV = (url) => {
+    return fetch(url).then(res => { return res.json() }).catch(err => console.log(err))
+}
+
+// Promise.all()
+const queryAll = Promise.all([getV('https://brianhuang.free.beeceptor.com/v2/get/1'),
+getV('https://brianhuang.free.beeceptor.com/v2/get/2'),
+getV('https://brianhuang.free.beeceptor.com/v2/get/3')])
+    .then((vals) => {
+        console.log(vals)
+    })
+
+
 
